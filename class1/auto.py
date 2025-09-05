@@ -27,13 +27,28 @@ class auto:
             return "Ya estoy usado"
         else:
             return "¡Ya dejenme descansar por favor!"
+    
+    @classmethod
+    def auto_toyota(cls,modelo):
+        marca = "Toyota"
+        kilometraje = 0
+        año = 2025
+        return cls(marca,modelo,año,kilometraje)
         
+    @staticmethod
+    def comparar_kilometraje(auto1,auto2):
+        if auto1.kilometraje == auto2.kilometraje:
+            return "Los kilometrajes son iguales"
+        return "Los kilometrajes son diferentes"
+    
+    @classmethod
+    def auto_ford(cls,modelo,año):
+        marca = "Ford"
+        kilometraje = 0
+        return cls(marca,modelo,año,kilometraje)
+    
+    @staticmethod
+    def es_nuevo(auto):
+        if auto.kilometraje == 0:
+            return "El auto es nuevo"
 
-mi_auto = auto("Toyota","Corolla",2023)
-
-print(mi_auto.mostrar_info())
-mi_auto.actualizar_kilometraje(15000)
-print(mi_auto.kilometraje)
-mi_auto.realizar_viaje(300)
-print(mi_auto.kilometraje)
-print(mi_auto.estado_auto())

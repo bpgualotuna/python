@@ -1,4 +1,4 @@
-from laptop_gaming import Laptop_Gaming
+from Laptop_Business import Laptop_Business
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
@@ -31,13 +31,13 @@ class App:
         self.memoria = tk.StringVar()
         ttk.Entry(self.root,textvariable=self.memoria).grid(row=2,column=1)
 
-        ttk.Label(self.root,text="Tarjeta Grafica").grid(row=3,column=0)
-        self.tar_grafica = tk.StringVar()
-        ttk.Entry(self.root,textvariable=self.tar_grafica).grid(row=3,column=1)
+        ttk.Label(self.root,text="Almacenamiento").grid(row=3,column=0)
+        self.almacenamiento = tk.StringVar()
+        ttk.Entry(self.root,textvariable=self.almacenamiento).grid(row=3,column=1)
 
-        ttk.Label(self.root,text="Precio").grid(row=4,column=0)
-        self.precio = tk.StringVar()
-        ttk.Entry(self.root,textvariable=self.precio).grid(row=4,column=1)
+        ttk.Label(self.root,text="Duracion Bateria").grid(row=4,column=0)
+        self.duracion_bateria = tk.StringVar()
+        ttk.Entry(self.root,textvariable=self.duracion_bateria).grid(row=4,column=1)
 
         ttk.Button(self.root,text="Agregar Laptop",command=self.agregar_laptop).grid(row=5,column=0)
 
@@ -51,12 +51,11 @@ class App:
 
 
     def agregar_laptop(self):
-        nueva_laptop= Laptop_Gaming(self.marca.get(),self.procesador.get(),self.memoria.get(),self.tar_grafica.get(),self.precio.get())
+        nueva_laptop= Laptop_Business(self.marca.get(),self.procesador.get(),self.memoria.get(),self.almacenamiento.get(),self.duracion_bateria.get())
         self.laptops.append(nueva_laptop)
         self.mostrar_laptop.insert(tk.END,f"{nueva_laptop}")
 
         self.mostrar_imagen_aleatoria()
-
 
     def mostrar_imagen_aleatoria(self):
         imagen_path = random.choice(self.imagenes)
@@ -67,10 +66,8 @@ class App:
         self.canva.create_image(0,0, anchor=tk.NW, image = photo)
         self.canva.image = photo
 
-        pass    
+        pass
 
 root = tk.Tk()
-
 app = App(root)
 root.mainloop()
-
